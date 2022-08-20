@@ -11,3 +11,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 ```bash
 cp ./nvim ~/.config/nvim
 ```
+4. Recompile Packer
+
+```
+:PackerSync
+```
