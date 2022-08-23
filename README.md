@@ -7,11 +7,16 @@
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 ```
-3. Copy file
+3. install lsp servers
+```bash
+npm i --location=global vscode-langservers-extracted typescript typescript-language-server @tailwindcss/language-server
+```
+
+4. Copy file
 ```bash
 cp ./nvim ~/.config/nvim
 ```
-4. Recompile Packer
+5. Recompile Packer
 
 ```
 :PackerSync
