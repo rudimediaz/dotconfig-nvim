@@ -14,7 +14,7 @@ npm i --location=global vscode-langservers-extracted typescript typescript-langu
 
 4. Copy file
 ```bash
-cp ./nvim ~/.config/nvim
+cp -r ./nvim ~/.config/nvim
 ```
 5. Recompile Packer
 
