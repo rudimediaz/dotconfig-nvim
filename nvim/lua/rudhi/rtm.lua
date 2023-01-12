@@ -70,12 +70,27 @@ require'lspconfig'.jsonls.setup {
 
 require'lspconfig'.cssls.setup {
   capabilities = capabilities,
-  on_attach = on_attach
+  on_attach = on_attach 
 }
+
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
 
 require'lspconfig'.tsserver.setup{
     capabilities = capabilities,
-    on_attach = on_attach
+    on_attach = on_attach,
+    commands = {
+        OrganizeImports = {
+          organize_imports,
+          description = "Organize Imports"
+        }
+    }
 }
 
 require'lspconfig'.eslint.setup{}
@@ -84,6 +99,12 @@ require'lspconfig'.tailwindcss.setup{
     capabilities = capabilities,
     on_attach = on_attach
 }
+
+require'lspconfig'.svelte.setup{
+    capabilities = capabilities,
+    on_attach = on_attach
+}
+
 -- luasnip setup
 local luasnip = require 'luasnip'
 
