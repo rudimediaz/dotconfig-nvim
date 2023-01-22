@@ -1,4 +1,25 @@
-require('lualine').setup()
+vim.g.adwaita_darker = true -- for darker version
+vim.g.adwaita_disable_cursorline = true -- to disable cursorline
+vim.cmd([[colorscheme adwaita]])
+-- vim.cmd("colorscheme dawnfox")
+
+require('mason').setup({
+  ui = {
+    icons  = {
+      package_installed = "v",
+      package_pending = "->",
+      package_uninstalled = "x"
+    }
+  }
+})
+require('mason-lspconfig').setup{
+  ensure_installed = { "cssls", "html", "tsserver", "eslint", "volar", "svelte", "tailwindcss", "jsonls" }
+}
+require('lualine').setup({
+    options = {
+        theme = "adwaita"
+    }
+})
 require("nvim-tree").setup()
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
@@ -10,7 +31,15 @@ require('nightfox').setup({
     }
 })
 
-vim.cmd("colorscheme carbonfox")
+
+
+-- telescope
+local tb = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', tb.find_files, {})
+vim.keymap.set('n', '<leader>fg', tb.live_grep, {})
+vim.keymap.set('n', '<leader>fb', tb.buffers, {})
+vim.keymap.set('n', '<leader>fh', tb.help_tags, {})
+
 
 -- neoformat autosave
 vim.g.neoformat_try_node_exe = 1
@@ -103,6 +132,12 @@ require'lspconfig'.tailwindcss.setup{
 require'lspconfig'.svelte.setup{
     capabilities = capabilities,
     on_attach = on_attach
+}
+
+require'lspconfig'.volar.setup{
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
 }
 
 -- luasnip setup

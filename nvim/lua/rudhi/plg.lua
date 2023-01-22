@@ -17,6 +17,11 @@ local startupfn = function(use)
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end
     }
+    -- lsp installer
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+    }
     -- lsp
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
@@ -35,6 +40,7 @@ local startupfn = function(use)
     }
     -- theme
     use 'EdenEast/nightfox.nvim'
+    use 'Mofiqul/adwaita.nvim'
     -- prettier
     use 'sbdchd/neoformat'
     -- svelte
@@ -43,6 +49,11 @@ local startupfn = function(use)
     use {
         'evanleck/vim-svelte',
         branch = 'main'
+    }
+    -- telescope
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = {{ 'nvim-lua/plenary.nvim' }}
     }
 
 end
