@@ -1,7 +1,17 @@
-vim.g.adwaita_darker = true -- for darker version
-vim.g.adwaita_disable_cursorline = true -- to disable cursorline
-vim.cmd([[colorscheme adwaita]])
+--vim.g.adwaita_darker = true -- for darker version
+--vim.g.adwaita_disable_cursorline = true -- to disable cursorline
+vim.cmd([[colorscheme nord]])
 -- vim.cmd("colorscheme dawnfox")
+
+
+require'nvim-treesitter.configs'.setup{
+    ensure_installed = {"typescript","javascript","json","css","scss","svelte","html","nix","vue","tsx","dockerfile","bash"},
+    --auto_install = true, 
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    }
+}
 
 require('mason').setup({
   ui = {
@@ -17,7 +27,7 @@ require('mason-lspconfig').setup{
 }
 require('lualine').setup({
     options = {
-        theme = "adwaita"
+        theme = "nord"
     }
 })
 require("nvim-tree").setup()
@@ -111,6 +121,11 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
+require'lspconfig'.denols.setup{
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 require'lspconfig'.tsserver.setup{
     capabilities = capabilities,
     on_attach = on_attach,
@@ -119,7 +134,7 @@ require'lspconfig'.tsserver.setup{
           organize_imports,
           description = "Organize Imports"
         }
-    }
+    },
 }
 
 require'lspconfig'.eslint.setup{}
@@ -138,6 +153,11 @@ require'lspconfig'.volar.setup{
   capabilities = capabilities,
   on_attach = on_attach,
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
+
+require'lspconfig'.rnix.setup{
+  capabilities = capabilities,
+  on_attach = on_attach
 }
 
 -- luasnip setup
