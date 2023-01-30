@@ -41,6 +41,7 @@ local startupfn = function(use)
     -- theme
     use 'EdenEast/nightfox.nvim'
     use 'Mofiqul/adwaita.nvim'
+    use 'shaunsingh/nord.nvim'
     -- prettier
     use 'sbdchd/neoformat'
     -- svelte
