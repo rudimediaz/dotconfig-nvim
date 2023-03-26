@@ -121,10 +121,11 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
-require'lspconfig'.denols.setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-}
+
+--require'lspconfig'.denols.setup{
+--    on_attach = on_attach,
+--  capabilities = capabilities,
+--}
 
 require'lspconfig'.tsserver.setup{
     capabilities = capabilities,
