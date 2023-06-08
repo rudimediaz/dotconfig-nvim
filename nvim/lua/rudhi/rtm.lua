@@ -5,7 +5,7 @@ vim.cmd([[colorscheme nord]])
 
 
 require'nvim-treesitter.configs'.setup{
-    ensure_installed = {"typescript","javascript","json","css","scss","svelte","html","nix","vue","tsx","dockerfile","bash"},
+    ensure_installed = {"typescript","javascript","json","css","scss","svelte","html","nix","vue","tsx","dockerfile","bash", "astro"},
     --auto_install = true, 
     highlight = {
         enable = true,
@@ -23,7 +23,7 @@ require('mason').setup({
   }
 })
 require('mason-lspconfig').setup{
-  ensure_installed = { "cssls", "html", "tsserver", "eslint", "volar", "svelte", "tailwindcss", "jsonls" }
+  ensure_installed = { "cssls", "html", "tsserver", "eslint", "volar", "svelte", "tailwindcss", "jsonls" ,"astro"}
 }
 require('lualine').setup({
     options = {
@@ -102,6 +102,8 @@ require'lspconfig'.html.setup {
   on_attach = on_attach
 }
 
+
+
 require'lspconfig'.jsonls.setup {
   capabilities = capabilities,
   on_attach = on_attach
@@ -156,6 +158,11 @@ require'lspconfig'.volar.setup{
   filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
 }
 
+require'lspconfig'.astro.setup{
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+
 require'lspconfig'.rnix.setup{
   capabilities = capabilities,
   on_attach = on_attach
@@ -208,3 +215,14 @@ cmp.event:on(
     'confirm_done',
     cmp_autopairs.on_confirm_done()
 )
+
+
+vim.cmd([[
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+]])
+
+vim.cmd([[command! -nargs=0 Fmt Neoformat]])
+
