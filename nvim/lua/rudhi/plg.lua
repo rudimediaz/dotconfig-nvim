@@ -42,6 +42,7 @@ local startupfn = function(use)
     use 'EdenEast/nightfox.nvim'
     use 'Mofiqul/adwaita.nvim'
     use 'shaunsingh/nord.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
     -- prettier
     use 'sbdchd/neoformat'
     -- svelte
