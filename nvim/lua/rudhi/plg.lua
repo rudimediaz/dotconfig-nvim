@@ -46,8 +46,8 @@ local startupfn = function(use)
     -- prettier
     use 'sbdchd/neoformat'
     -- svelte
-    use 'othree/html5.vim'
-    use 'pangloss/vim-javascript'
+    --use 'othree/html5.vim'
+    --use 'pangloss/vim-javascript'
     use {
         'evanleck/vim-svelte',
         branch = 'main'

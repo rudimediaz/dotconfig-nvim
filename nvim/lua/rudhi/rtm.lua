@@ -23,7 +23,7 @@ require('mason').setup({
   }
 })
 require('mason-lspconfig').setup{
-  ensure_installed = { "cssls", "html", "tsserver", "eslint", "volar", "svelte", "tailwindcss", "jsonls" ,"astro"}
+  ensure_installed = { "cssls", "html", "tsserver", "eslint", "volar", "svelte", "tailwindcss", "jsonls" ,"astro", "denols"}
 }
 require('lualine').setup({
     options = {
@@ -152,11 +152,13 @@ require'lspconfig'.svelte.setup{
     on_attach = on_attach
 }
 
-require'lspconfig'.volar.setup{
-  capabilities = capabilities,
-  on_attach = on_attach,
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
-}
+
+--require'lspconfig'.volar.setup{
+--  capabilities = capabilities,
+--  on_attach = on_attach,
+--  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+--}
+
 
 require'lspconfig'.astro.setup{
   capabilities = capabilities,
